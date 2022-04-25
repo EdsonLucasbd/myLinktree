@@ -1,0 +1,17 @@
+import React from 'react';
+
+import { Container } from './styles';
+
+interface ButtonProps {
+  children: string,
+}
+
+const Button: React.FC<ButtonProps> = ({ children }) => {
+  return (
+    <Container>
+      {children}
+    </Container>
+  );
+}
+
+export default Button;
