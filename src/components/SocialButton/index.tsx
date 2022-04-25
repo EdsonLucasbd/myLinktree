@@ -10,6 +10,7 @@ interface SocialProps {
 }
 
 const SocialButton: React.FC = ({socialName}) => {
+  
   const options = {
     intagram: <FaInstagram/>,
     whatsapp: <FaWhatsapp/>,
