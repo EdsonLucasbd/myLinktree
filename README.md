@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -32,3 +33,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+=======
+This is a simple page containing my social media links, 
+if you liked it, you can also make yours, it's easy and you can customize it your way.
+just download the files and start playing :smile:.
+
+I hosted my page on <a href="https://app.netlify.com/">netlyfi</a>, but feel free to choose where to host yours.
+
+I'm open to tips and suggestions for improvements :v:
+ 
+### Look a example :arrow_down:
+ 
+<img src="https://i.ibb.co/d0C9WPh/print-my-links-page.jpg" alt="print-my-links-page" border="0">
+ 
+
+>>>>>>> 51c27789b59fb124568ebcdfebaaba3c9eb31263
