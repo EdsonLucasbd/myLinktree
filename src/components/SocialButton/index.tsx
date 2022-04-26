@@ -1,24 +1,38 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { IconContext } from 'react-icons';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { FiFacebook, FiLinkedin } from 'react-icons/fi'
 import { HiOutlineMail } from 'react-icons/hi'
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 interface SocialProps {
-  socialName: string
+  socialName: string;
 }
+const SocialButton: React.FC<SocialProps> = ({ socialName }) => {
 
-const SocialButton: React.FC = ({socialName}) => {
-  
-  const options = {
-    intagram: <FaInstagram/>,
-    whatsapp: <FaWhatsapp/>,
-    facebook: <FiFacebook/>,
-    linkedin: <FiLinkedin/>,
-    email: <HiOutlineMail/>
+  const options: { [key: string]: ReactElement } = {
+    instagram: <FaInstagram />,
+    whatsapp: <FaWhatsapp />,
+    facebook: <FiFacebook />,
+    linkedin: <FiLinkedin />,
+    email: <HiOutlineMail />
   }
-  return (Object.keys(options).find(socialName));
+
+  const returnButton = () => {
+    for (const option in options) {
+      if (option === socialName) {
+        return options[option];
+      }
+    }
+  }
+  return (
+    <IconContext.Provider value={{ color: "#3D9584", size: '1.88rem'}}>
+      <Container>
+        {returnButton()}
+      </Container>
+    </IconContext.Provider>
+  )
 }
 
 export default SocialButton;

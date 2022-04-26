@@ -13,3 +13,8 @@ export const Container = styled.div<ContainerProps>`
   width: 100vw;
   height: 100vh;
 `;
+
+export const SocialButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`

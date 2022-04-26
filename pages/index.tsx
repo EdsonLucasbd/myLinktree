@@ -5,7 +5,8 @@ import { Key } from 'react';
 import { Image, useQuerySubscription } from 'react-datocms';
 import Button from '../src/components/Button';
 import Photo from '../src/components/Photo';
-import { Container } from '../styles/pages/index';
+import SocialButton from '../src/components/SocialButton';
+import { Container, SocialButtonsContainer } from '../styles/pages/index';
 
 import { requestFromDato } from '../utils/datocms'
 
@@ -84,9 +85,11 @@ const Home: NextPage<Props> = ({ subscription }) => {
           {data.main.botao.map((botao: { id: Key | null | undefined; tituloDoBotao: string; }) =>
             <Button key={botao.id}>{botao.tituloDoBotao}</Button>
           )}
-          {data.main.redesSociais.map((rede: { id: Key | null | undefined; nomeRedeSocial: string; }) =>
-            <h5 key={rede.id}>rede.nomeRedeSocial</h5>
-          )}
+          <SocialButtonsContainer>
+            {data.main.redesSociais.map((rede: { id: Key | null | undefined; nomeRedeSocial: string; }) =>
+              <SocialButton key={rede.id} socialName={rede.nomeRedeSocial} />
+            )}
+          </SocialButtonsContainer>
         </>
       }
     </Container>
