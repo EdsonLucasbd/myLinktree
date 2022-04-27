@@ -1,12 +1,18 @@
 import styled from "styled-components";
+import { device } from "../../../styles/theme";
 
-export const Container = styled.button`
+export const Container = styled.a`
+  /* text-decoration: none; */
+`;
+
+export const MyButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   color: #000;
-  border: 1px solid #3D958450;
+  cursor: pointer;
+  border: 0.063rem solid #3D958450;
   width: 25.25rem;
   height: 3.57rem;
   font-weight: bold;
@@ -17,5 +23,11 @@ export const Container = styled.button`
   &:hover {
     background-color: #3D9584;
     color: #fff;
+  }
+
+  @media ${device.mobile} {
+    width: 17.32rem;
+    height: 2.45rem;
+    font-size: 0.75rem;
   }
 `

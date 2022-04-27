@@ -3,8 +3,7 @@ import Markdown from 'markdown-to-jsx';
 import type { GetStaticProps, NextPage } from 'next'
 import { Key } from 'react';
 import { Image, useQuerySubscription } from 'react-datocms';
-import Button from '../src/components/Button';
-import Photo from '../src/components/Photo';
+import ContactButton from '../src/components/ContactButton';
 import SocialButton from '../src/components/SocialButton';
 import { Container, SocialButtonsContainer } from '../styles/pages/index';
 
@@ -82,12 +81,24 @@ const Home: NextPage<Props> = ({ subscription }) => {
           <Image data={data.main.foto.responsiveImage} />
           <h3>{data.main.titulo}</h3>
           <Markdown>{data.main.descricao}</Markdown>
-          {data.main.botao.map((botao: { id: Key | null | undefined; tituloDoBotao: string; }) =>
-            <Button key={botao.id}>{botao.tituloDoBotao}</Button>
+          {data.main.botao.map((botao: { 
+            id: Key | null | undefined; 
+            tituloDoBotao: string; 
+            link: string; 
+          }) =>
+            <ContactButton key={botao.id} buttonLink={botao.link}>{botao.tituloDoBotao}</ContactButton>
           )}
           <SocialButtonsContainer>
-            {data.main.redesSociais.map((rede: { id: Key | null | undefined; nomeRedeSocial: string; }) =>
-              <SocialButton key={rede.id} socialName={rede.nomeRedeSocial} />
+            {data.main.redesSociais.map((rede: { 
+              id: Key | null | undefined; 
+              nomeRedeSocial: string; 
+              linkRedeSocial: string;
+            }) =>
+              <SocialButton 
+                key={rede.id} 
+                socialLink={rede.linkRedeSocial} 
+                socialName={rede.nomeRedeSocial} 
+              />
             )}
           </SocialButtonsContainer>
         </>
