@@ -1,13 +1,14 @@
 import { gql } from 'graphql-request'
-import Markdown from 'markdown-to-jsx';
 import type { GetStaticProps, NextPage } from 'next'
 import { Key } from 'react';
-import { Image, useQuerySubscription } from 'react-datocms';
+import Image from 'next/image'
+import { Image as DatoIMage, useQuerySubscription } from 'react-datocms';
 import ContactButton from '../src/components/ContactButton';
 import SocialButton from '../src/components/SocialButton';
-import { Container, SocialButtonsContainer } from '../styles/pages/index';
+import { IndexContainer, ContentContainer, Description, Footer, SocialButtonsContainer, Title } from '../styles/pages/index';
 
 import { requestFromDato } from '../utils/datocms'
+import Head from 'next/head';
 
 interface Props {
   subscription: any,
@@ -31,7 +32,7 @@ query MyQuery {
       }
     }
     titulo
-    descricao(markdown: true)
+    descricao
     botao {
       tituloDoBotao
       link
@@ -75,35 +76,53 @@ const Home: NextPage<Props> = ({ subscription }) => {
   const { data, status, error } = useQuerySubscription(subscription);
 
   return (
-    <Container>
-      {data &&
-        <>
-          <Image data={data.main.foto.responsiveImage} />
-          <h3>{data.main.titulo}</h3>
-          <Markdown>{data.main.descricao}</Markdown>
-          {data.main.botao.map((botao: { 
-            id: Key | null | undefined; 
-            tituloDoBotao: string; 
-            link: string; 
-          }) =>
-            <ContactButton key={botao.id} buttonLink={botao.link}>{botao.tituloDoBotao}</ContactButton>
-          )}
-          <SocialButtonsContainer>
-            {data.main.redesSociais.map((rede: { 
-              id: Key | null | undefined; 
-              nomeRedeSocial: string; 
-              linkRedeSocial: string;
+    <IndexContainer>
+      <Head>
+        <title>Letícia Santos | Assistente</title>
+      </Head>
+      <ContentContainer>
+        {data &&
+          <>
+            <DatoIMage data={data.main.foto.responsiveImage} />
+            <Title>{data.main.titulo}</Title>
+            <Description>
+              {data.main.descricao}
+            </Description>
+            {data.main.botao.map((botao: {
+              id: Key | null | undefined;
+              tituloDoBotao: string;
+              link: string;
             }) =>
-              <SocialButton 
-                key={rede.id} 
-                socialLink={rede.linkRedeSocial} 
-                socialName={rede.nomeRedeSocial} 
-              />
+              <ContactButton key={botao.id} buttonLink={botao.link}>{botao.tituloDoBotao}</ContactButton>
             )}
-          </SocialButtonsContainer>
-        </>
-      }
-    </Container>
+            <SocialButtonsContainer>
+              {data.main.redesSociais.map((rede: {
+                id: Key | null | undefined;
+                nomeRedeSocial: string;
+                linkRedeSocial: string;
+              }) =>
+                <SocialButton
+                  key={rede.id}
+                  socialLink={rede.linkRedeSocial}
+                  socialName={rede.nomeRedeSocial}
+                />
+              )}
+            </SocialButtonsContainer>
+          </>
+        }
+      </ContentContainer>
+      <Footer>
+        <p>Desenvolvido por</p>
+        <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener'>
+          <Image
+            src='https://res.cloudinary.com/my-strapi-cloud/image/upload/c_scale,w_40/v1649681577/samples/EL_n5obgf.png'
+            width={40}
+            height={40}
+            alt='Edson Lucas'
+          />
+        </a>
+      </Footer>
+    </IndexContainer>
   )
 }
 

@@ -90,6 +90,8 @@ $ yarn start
 
 Este projeto está sob licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
+<a href="https://www.flaticon.com/br/icones-gratis/ioga" title="ioga ícones">Icones criados por Freepik - Flaticon</a>
+
 
 Feito com :heart: por <a href="https://github.com/EdsonLucasbd" target="_blank">Edson Lucas</a>
 

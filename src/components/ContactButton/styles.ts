@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "../../../styles/theme";
 
 export const Container = styled.a`
-  /* text-decoration: none; */
+  text-decoration: none;
 `;
 
 export const MyButton = styled.button`
@@ -12,11 +12,12 @@ export const MyButton = styled.button`
   background-color: transparent;
   color: #000;
   cursor: pointer;
-  border: 0.063rem solid #3D958450;
+  border: 0.064rem solid #3D958450;
   width: 25.25rem;
   height: 3.57rem;
+  margin-bottom: 0.8rem;
   font-weight: bold;
-  box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
   transition: ease-in-out .2s;
 
@@ -27,7 +28,6 @@ export const MyButton = styled.button`
 
   @media ${device.mobile} {
     width: 17.32rem;
-    height: 2.45rem;
-    font-size: 0.75rem;
+    height: 3.5rem;
   }
 `

@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const ContactButton: React.FC<ButtonProps> = ({ children, buttonLink }) => {
   return (
-    <Container href={buttonLink}>
+    <Container href={buttonLink} tabIndex={1}>
       <MyButton>
         {children}
       </MyButton>

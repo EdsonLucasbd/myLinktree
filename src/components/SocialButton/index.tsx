@@ -35,7 +35,7 @@ const SocialButton: React.FC<SocialProps> = ({ socialName, socialLink }) => {
   }
   return (
     <IconContext.Provider value={{ color: "#3D9584", size: '1.88rem' }}>
-      <Container>
+      <Container tabIndex={1}>
         {returnButton()}
       </Container>
     </IconContext.Provider>
