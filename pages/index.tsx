@@ -85,7 +85,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
         <link rel="icon" href={`${data[node].favicon.url}`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <ContentContainer>
+      <ContentContainer backgroundColor={data[node].corFundo.hex}>
         {data &&
           <>
             <DatoIMage data={data[node].foto.responsiveImage} />

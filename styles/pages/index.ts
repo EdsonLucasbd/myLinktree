@@ -12,7 +12,7 @@ export const IndexContainer = styled.div`
 `
 
 export const ContentContainer = styled.div<ContainerProps>`
-  background: ${(props) => (props.backgroundColor ? `${props.backgroundColor}` : `${props.theme.background}`)};
+  background: ${(props) => (props.backgroundColor !== undefined ? `${props.backgroundColor}` : `${props.theme.background}`)};
   display: flex;
   flex: 1;
   flex-direction: column;
