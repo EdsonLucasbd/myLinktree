@@ -3,6 +3,13 @@ import { device } from "../../../styles/theme";
 
 export const Container = styled.a`
   text-decoration: none;
+  width: 25.25rem;
+  height: 3.57rem;
+
+  @media ${device.mobile} {
+    width: 17.32rem;
+    height: 3.5rem;
+  }
 `;
 
 export const MyButton = styled.button`

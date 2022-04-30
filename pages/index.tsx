@@ -16,7 +16,7 @@ interface Props {
 
 const DATA_QUERY = gql`
 query MyQuery {
-  main {
+  ${process.env.NEXT_PUBLIC_DATOCMS_INSTANCE} {
     foto {
       responsiveImage(imgixParams: {auto: format, fit: crop, w: "124", h: "124"}) {
         srcSet
@@ -32,19 +32,21 @@ query MyQuery {
       }
     }
     titulo
+    tituloAba
     descricao
     botao {
       tituloDoBotao
       link
-      id
     }
     redesSociais {
       nomeRedeSocial
       linkRedeSocial
-      id
     }
     corFundo {
       hex
+    }
+    favicon {
+      url
     }
   }
 }
@@ -74,29 +76,37 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const Home: NextPage<Props> = ({ subscription }) => {
   const { data, status, error } = useQuerySubscription(subscription);
+  const node: any = process.env.NEXT_PUBLIC_DATOCMS_INSTANCE
 
   return (
     <IndexContainer>
       <Head>
-        <title>Letícia Santos | Assistente</title>
+        <title>{`${data[node].tituloAba}`}</title>
+        <link rel="icon" href={`${data[node].favicon.url}`} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <ContentContainer>
         {data &&
           <>
-            <DatoIMage data={data.main.foto.responsiveImage} />
-            <Title>{data.main.titulo}</Title>
+            <DatoIMage data={data[node].foto.responsiveImage} />
+            <Title>{data[node].titulo}</Title>
             <Description>
-              {data.main.descricao}
+              {data[node].descricao}
             </Description>
-            {data.main.botao.map((botao: {
+            {data[node].botao.map((botao: {
               id: Key | null | undefined;
               tituloDoBotao: string;
               link: string;
             }) =>
-              <ContactButton key={botao.id} buttonLink={botao.link}>{botao.tituloDoBotao}</ContactButton>
+              <ContactButton 
+                key={botao.id} 
+                buttonLink={botao.link}
+              >
+                {botao.tituloDoBotao}
+              </ContactButton>
             )}
             <SocialButtonsContainer>
-              {data.main.redesSociais.map((rede: {
+              {data[node].redesSociais.map((rede: {
                 id: Key | null | undefined;
                 nomeRedeSocial: string;
                 linkRedeSocial: string;
@@ -127,5 +137,3 @@ const Home: NextPage<Props> = ({ subscription }) => {
 }
 
 export default Home
-
-
