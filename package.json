@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/tiny-json-http": "^7.3.1",
     "graphql": "^16.4.0",
     "graphql-request": "^4.2.0",
     "markdown-to-jsx": "^7.1.7",
@@ -17,7 +18,8 @@
     "react-datocms": "^3.0.12",
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "tiny-json-http": "^7.4.2"
   },
   "devDependencies": {
     "@types/node": "17.0.29",

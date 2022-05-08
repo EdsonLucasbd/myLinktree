@@ -52,31 +52,35 @@ query MyQuery {
 }
 `
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const graphqlRequest = {
     query: DATA_QUERY,
-    preview: context.preview,
-    variables: { limit: 10 }
+    variables: { limit: 10 },
   };
   return {
     props: {
-      subscription: context.preview
-        ? {
-          ...graphqlRequest,
-          initialData: await requestFromDato(graphqlRequest),
-          token: process.env.NEXT_DATOCMS_API_TOKEN,
-        }
-        : {
-          enabled: false,
-          initialData: await requestFromDato(graphqlRequest),
-        },
+      subscription: {
+        ...graphqlRequest,
+        initialData: await requestFromDato(graphqlRequest),
+        token: process.env.NEXT_PUBLIC_DATOCMS_API_TOKEN,
+      }
     },
   }
 };
 
 const Home: NextPage<Props> = ({ subscription }) => {
-  const { data, status, error } = useQuerySubscription(subscription);
+  const { data, error, status } = useQuerySubscription(subscription);
   const node: any = process.env.NEXT_PUBLIC_DATOCMS_INSTANCE
+
+  const statusMessage = {
+    connecting: 'Connecting to DatoCMS...',
+    connected: 'Connected to DatoCMS, receiving live updates!',
+    closed: 'Connection closed',
+  };
+
+  console.log('Status: ', statusMessage[status])
+  
+  error && console.log('Erro: ', error)
 
   return (
     <IndexContainer>
@@ -121,7 +125,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
           </>
         }
       </ContentContainer>
-      <Footer>
+      <Footer backgroundColor={data[node].corFundo.hex}>
         <p>Desenvolvido por</p>
         <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener'>
           <Image

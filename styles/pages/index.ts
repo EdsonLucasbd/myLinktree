@@ -46,11 +46,13 @@ export const Description = styled.h2`
   }
 `
 
-export const Footer = styled.div`
+export const Footer = styled.div<ContainerProps>`
+  background: ${(props) => (props.backgroundColor !== undefined ? `${props.backgroundColor}` : `${props.theme.background}`)} !important;
   display: flex;
   width: 100vw;
   justify-content: center;
   align-items: center;
+  background: transparent;
 
   p {
     font-size: 0.9rem;
