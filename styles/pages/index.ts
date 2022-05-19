@@ -63,5 +63,6 @@ export const Footer = styled.div<ContainerProps>`
       width: 25px;
       height: 25px      
     }
+    font-size: 0.5rem
   }
 `

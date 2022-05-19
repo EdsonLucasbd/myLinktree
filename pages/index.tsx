@@ -2,13 +2,14 @@ import { gql } from 'graphql-request'
 import type { GetStaticProps, NextPage } from 'next'
 import { Key } from 'react';
 import Image from 'next/image'
-import { Image as DatoIMage, useQuerySubscription } from 'react-datocms';
+import { Image as DatoImage, useQuerySubscription } from 'react-datocms';
 import ContactButton from '../src/components/ContactButton';
 import SocialButton from '../src/components/SocialButton';
 import { IndexContainer, ContentContainer, Description, Footer, SocialButtonsContainer, Title } from '../styles/pages/index';
 
 import { requestFromDato } from '../utils/datocms'
 import Head from 'next/head';
+import { Photo } from '../src/components/Photo';
 
 interface Props {
   subscription: any,
@@ -43,6 +44,9 @@ query MyQuery {
       linkRedeSocial
     }
     corFundo {
+      hex
+    }
+    corIcones {
       hex
     }
     favicon {
@@ -92,7 +96,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
       <ContentContainer backgroundColor={data[node].corFundo.hex}>
         {data &&
           <>
-            <DatoIMage data={data[node].foto.responsiveImage} />
+            <Photo url={data[node].foto.responsiveImage} shadowColor={data[node].corIcones.hex}/>
             <Title>{data[node].titulo}</Title>
             <Description>
               {data[node].descricao}
@@ -105,6 +109,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
               <ContactButton 
                 key={botao.id} 
                 buttonLink={botao.link}
+                color={data[node].corIcones.hex}
               >
                 {botao.tituloDoBotao}
               </ContactButton>
@@ -119,6 +124,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
                   key={rede.id}
                   socialLink={rede.linkRedeSocial}
                   socialName={rede.nomeRedeSocial}
+                  color={data[node].corIcones.hex}
                 />
               )}
             </SocialButtonsContainer>
@@ -130,8 +136,8 @@ const Home: NextPage<Props> = ({ subscription }) => {
         <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener'>
           <Image
             src='https://res.cloudinary.com/my-strapi-cloud/image/upload/c_scale,w_40/v1649681577/samples/EL_n5obgf.png'
-            width={40}
-            height={40}
+            width={35}
+            height={35}
             alt='Edson Lucas'
           />
         </a>

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { device } from "../../../styles/theme";
 
+interface ButtonProps {
+  borderColor?: string
+}
+
 export const Container = styled.a`
   text-decoration: none;
   width: 25.25rem;
@@ -12,14 +16,14 @@ export const Container = styled.a`
   }
 `;
 
-export const MyButton = styled.button`
+export const MyButton = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   color: #000;
   cursor: pointer;
-  border: 0.064rem solid #3D958450;
+  border: 0.064rem solid ${(props) => (props.borderColor !== undefined ? `${props.borderColor}50` : `${props.theme.background}`)};
   width: 25.25rem;
   height: 3.57rem;
   margin-bottom: 0.8rem;
@@ -29,7 +33,7 @@ export const MyButton = styled.button`
   transition: ease-in-out .2s;
 
   &:hover {
-    background-color: #3D9584;
+    background-color: ${(props) => (props.borderColor !== undefined ? `${props.borderColor}` : `${props.theme.background}`)};;
     color: #fff;
   }
 

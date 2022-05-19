@@ -9,8 +9,9 @@ import { Container } from './styles';
 interface SocialProps {
   socialName: string;
   socialLink: string;
+  color: string
 }
-const SocialButton: React.FC<SocialProps> = ({ socialName, socialLink }) => {
+const SocialButton: React.FC<SocialProps> = ({ socialName, socialLink, color }) => {
 
   const options: { [key: string]: ReactElement } = {
     instagram: <FaInstagram />,
@@ -34,7 +35,7 @@ const SocialButton: React.FC<SocialProps> = ({ socialName, socialLink }) => {
     }
   }
   return (
-    <IconContext.Provider value={{ color: "#3D9584", size: '1.88rem' }}>
+    <IconContext.Provider value={{ color: `${color}`, size: '1.88rem' }}>
       <Container tabIndex={1}>
         {returnButton()}
       </Container>

@@ -4,15 +4,14 @@ import React from 'react';
 import { Container, ProfilePhoto } from './styles';
 
 interface Params {
-  url: ResponsiveImageType
+  url: ResponsiveImageType;
+  shadowColor?: string
 }
 
-const Photo = ({ url }: Params) => {
+export const Photo = ({ url, shadowColor }: Params) => {
   return (
-    <Container>
-      <Image data={url} layout='fill'/>
+    <Container shadowColor={shadowColor}>
+      <Image data={url}/>
     </Container>
   );
 }
-
-export default Photo;
