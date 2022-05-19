@@ -12,8 +12,8 @@ export const Container = styled.div<ContainerProps>`
   width: 7.75rem;
   height: 7.75rem;
   border-radius: 50%;
-  -webkit-box-shadow: 5px 5px 15px -4px ${(props) => (props.shadowColor !== undefined ? `${props.shadowColor}` : `${props.theme.background}`)}; 
-  box-shadow: 0px 8px 15px -4px ${(props) => (props.shadowColor !== undefined ? `${props.shadowColor}` : `${props.theme.background}`)};
+  -webkit-box-shadow: 5px 5px 15px -4px ${(props) => (props.shadowColor !== undefined ? `${props.shadowColor}` : 'transparent')}; 
+  box-shadow: 0px 8px 15px -4px ${(props) => (props.shadowColor !== undefined ? `${props.shadowColor}` : 'transparent')};
 `;
 
 export const ProfilePhoto = styled(Image)`

@@ -96,7 +96,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
       <ContentContainer backgroundColor={data[node].corFundo.hex}>
         {data &&
           <>
-            <Photo url={data[node].foto.responsiveImage} shadowColor={data[node].corIcones.hex}/>
+            <Photo url={data[node].foto.responsiveImage} />
             <Title>{data[node].titulo}</Title>
             <Description>
               {data[node].descricao}
