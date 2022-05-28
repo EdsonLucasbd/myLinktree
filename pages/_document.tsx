@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+const userId = '2992566'
 class MyDocument extends Document {
   render() {
     return (
