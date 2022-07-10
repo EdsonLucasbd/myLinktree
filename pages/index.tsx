@@ -49,6 +49,15 @@ query MyQuery {
     corIcones {
       hex
     }
+    corHoverBotao {
+      hex
+    }
+    corTextoBotaoNormal {
+      hex
+    }
+    corTextoBotaoSelecionado {
+      hex
+    }
     favicon {
       url
     }
@@ -110,6 +119,9 @@ const Home: NextPage<Props> = ({ subscription }) => {
                 key={botao.id} 
                 buttonLink={botao.link}
                 color={data[node].corIcones.hex}
+                hoverColor={data[node].corHoverBotao.hex}
+                textColor={data[node].corTextoBotaoNormal.hex}
+                textHoverColor={data[node].corTextoBotaoSelecionado.hex}
               >
                 {botao.tituloDoBotao}
               </ContactButton>
