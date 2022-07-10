@@ -34,7 +34,7 @@ export const MyButton = styled.button<ButtonProps>`
   transition: ease-in-out .2s;
 
   &:hover {
-    background-color: ${(props) => (props.borderColor !== undefined ? `${props.borderColor}99` : `${props.theme.background}`)};
+    background-color: #b66838 /* ${(props) => (props.borderColor !== undefined ? `${props.borderColor}99` : `${props.theme.background}`)} */;
     color: #000;
   }
 
