@@ -5,13 +5,13 @@ import { Container, ProfilePhoto } from './styles';
 
 interface Params {
   url: ResponsiveImageType;
-  shadowColor?: string
+  shadowColor?: string;
 }
 
 export const Photo = ({ url, shadowColor }: Params) => {
   return (
     <Container shadowColor={shadowColor}>
-      <Image data={url}/>
+      <Image data={url} />
     </Container>
   );
 }

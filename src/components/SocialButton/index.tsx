@@ -26,7 +26,7 @@ const SocialButton: React.FC<SocialProps> = ({ socialName, socialLink, color }) 
       if (option === socialName) {
         return (
           <Link href={socialLink}>
-            <a target={'_blank'} rel='noopener'>
+            <a target={'_blank'} rel='noopener' role={'button'} aria-label={`Entre em contato comigo via ${socialName}`} >
               {options[option]}
             </a>
           </Link>
