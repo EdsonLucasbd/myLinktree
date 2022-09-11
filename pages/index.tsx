@@ -92,7 +92,7 @@ const Home: NextPage<Props> = ({ subscription }) => {
   };
 
   console.log('Status: ', statusMessage[status])
-  
+
   error && console.log('Erro: ', error)
 
   return (
@@ -115,8 +115,8 @@ const Home: NextPage<Props> = ({ subscription }) => {
               tituloDoBotao: string;
               link: string;
             }) =>
-              <ContactButton 
-                key={botao.id} 
+              <ContactButton
+                key={botao.id}
                 buttonLink={botao.link}
                 color={data[node].corIcones.hex}
                 hoverColor={data[node].corHoverBotao.hex}
@@ -145,11 +145,11 @@ const Home: NextPage<Props> = ({ subscription }) => {
       </ContentContainer>
       <Footer backgroundColor={data[node].corFundo.hex}>
         <p>Desenvolvido por</p>
-        <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener'>
+        <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener' aria-label='Acesse o portfólio do desenvolvedor deste site'>
           <Image
-            src='https://res.cloudinary.com/my-strapi-cloud/image/upload/c_scale,w_40/v1649681577/samples/EL_n5obgf.png'
-            width={35}
-            height={35}
+            src='https://www.datocms-assets.com/66381/1660706075-contact-logo-3.png'
+            width={23}
+            height={23}
             alt='Edson Lucas'
           />
         </a>

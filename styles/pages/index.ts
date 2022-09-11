@@ -56,12 +56,13 @@ export const Footer = styled.div<ContainerProps>`
 
   p {
     font-size: 0.9rem;
+    margin-right: .3125rem;
   }
 
   @media ${device.mobile} {
-    image{
-      width: 25px;
-      height: 25px      
+    img {
+      width: 21px !important;
+      height: 21px !important      
     }
     font-size: 0.5rem
   }
