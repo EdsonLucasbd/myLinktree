@@ -1,7 +1,7 @@
 import { Image, ResponsiveImageType } from 'react-datocms';
 import React from 'react';
 
-import { Container, ProfilePhoto } from './styles';
+import { Container } from './styles';
 
 interface Params {
   url: ResponsiveImageType;
