@@ -17,7 +17,7 @@ interface Props {
 
 const DATA_QUERY = gql`
 query MyQuery {
-  ${process.env.NEXT_PUBLIC_DATOCMS_INSTANCE} {
+  main {
     foto {
       responsiveImage(imgixParams: {auto: format, fit: crop, w: "124", h: "124"}) {
         srcSet
@@ -47,6 +47,9 @@ query MyQuery {
       hex
     }
     corIcones {
+      hex
+    }
+    corTextos {
       hex
     }
     corHoverBotao {
@@ -83,7 +86,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Home: NextPage<Props> = ({ subscription }) => {
   const { data, error, status } = useQuerySubscription(subscription);
-  const node: any = process.env.NEXT_PUBLIC_DATOCMS_INSTANCE
 
   const statusMessage = {
     connecting: 'Connecting to DatoCMS...',
@@ -98,19 +100,19 @@ const Home: NextPage<Props> = ({ subscription }) => {
   return (
     <IndexContainer>
       <Head>
-        <title>{`${data[node].tituloAba}`}</title>
-        <link rel="icon" href={`${data[node].favicon.url}`} />
+        <title>{`${data.main.tituloAba}`}</title>
+        <link rel="icon" href={`${data.main.favicon.url}`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <ContentContainer backgroundColor={data[node].corFundo.hex}>
+      <ContentContainer backgroundColor={data.main.corFundo.hex}>
         {data &&
           <>
-            <Photo url={data[node].foto.responsiveImage} />
-            <Title>{data[node].titulo}</Title>
-            <Description>
-              {data[node].descricao}
+            <Photo url={data.main.foto.responsiveImage} />
+            <Title textColor={data.main.corTextos.hex}>{data.main.titulo}</Title>
+            <Description textColor={data.main.corTextos.hex}>
+              {data.main.descricao}
             </Description>
-            {data[node].botao.map((botao: {
+            {data.main.botao.map((botao: {
               id: Key | null | undefined;
               tituloDoBotao: string;
               link: string;
@@ -118,16 +120,16 @@ const Home: NextPage<Props> = ({ subscription }) => {
               <ContactButton
                 key={botao.id}
                 buttonLink={botao.link}
-                color={data[node].corIcones.hex}
-                hoverColor={data[node].corHoverBotao.hex}
-                textColor={data[node].corTextoBotaoNormal.hex}
-                textHoverColor={data[node].corTextoBotaoSelecionado.hex}
+                color={data.main.corIcones.hex}
+                hoverColor={data.main.corHoverBotao.hex}
+                textColor={data.main.corTextoBotaoNormal.hex}
+                textHoverColor={data.main.corTextoBotaoSelecionado.hex}
               >
                 {botao.tituloDoBotao}
               </ContactButton>
             )}
             <SocialButtonsContainer>
-              {data[node].redesSociais.map((rede: {
+              {data.main.redesSociais.map((rede: {
                 id: Key | null | undefined;
                 nomeRedeSocial: string;
                 linkRedeSocial: string;
@@ -136,14 +138,14 @@ const Home: NextPage<Props> = ({ subscription }) => {
                   key={rede.id}
                   socialLink={rede.linkRedeSocial}
                   socialName={rede.nomeRedeSocial}
-                  color={data[node].corIcones.hex}
+                  color={data.main.corIcones.hex}
                 />
               )}
             </SocialButtonsContainer>
           </>
         }
       </ContentContainer>
-      <Footer backgroundColor={data[node].corFundo.hex}>
+      <Footer backgroundColor={data.main.corFundo.hex} textColor={data.main.corTextos.hex}>
         <p>Desenvolvido por</p>
         <a href='https://meu-portfolio-vercel.vercel.app/' target='_blank' rel='noopener' aria-label='Acesse o portfólio do desenvolvedor deste site'>
           <Image

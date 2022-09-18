@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { device } from '../theme';
 
 interface ContainerProps {
-  backgroundColor?: string
+  backgroundColor?: string,
+  textColor?: string
+}
+interface TextProps {
+  textColor?: string
 }
 
 export const IndexContainer = styled.div`
@@ -27,13 +31,14 @@ export const SocialButtonsContainer = styled.div`
   flex-direction: row;
 `
 
-export const Title = styled.h1`
+export const Title = styled.h1<TextProps>`
+  color: ${(props) => (props.textColor !== undefined ? `${props.textColor}` : `${props.theme.color}`)};
   font-weight: bold;
   font-size: 1rem;
   padding-top: 2.07rem;
 `
-
-export const Description = styled.h2`
+export const Description = styled.h2<TextProps>`
+  color: ${(props) => (props.textColor !== undefined ? `${props.textColor}` : `${props.theme.color}`)};
   margin: 0 1rem;
   max-width: 100%;
   font-weight: 500;
@@ -48,6 +53,7 @@ export const Description = styled.h2`
 
 export const Footer = styled.div<ContainerProps>`
   background: ${(props) => (props.backgroundColor !== undefined ? `${props.backgroundColor}` : `${props.theme.background}`)} !important;
+  color: ${(props) => (props.textColor !== undefined ? `${props.textColor}` : `${props.theme.color}`)};
   display: flex;
   width: 100vw;
   justify-content: center;

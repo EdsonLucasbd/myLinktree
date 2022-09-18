@@ -1,7 +1,8 @@
 import GlobalStyles from './globals';
 
 export const theme = {
-  background: '#EFF6E7'
+  background: '#EFF6E7',
+  color: '#000000'
 }
 
 const size = {
